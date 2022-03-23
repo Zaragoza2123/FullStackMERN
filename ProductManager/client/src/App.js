@@ -10,10 +10,12 @@ import {
 import ProductList from './components/ProductList';
 import ProductForm from './components/ProductForm';
 import ProductItem from './components/ProductItem';
+import ProductEdit from './components/ProductEdit';
 
 
 
 function App() {
+  //make a var that will be sent to the form comp, itll toggle it every submit
   let [formSubmitted, setFormSubmitted] = useState(false)
 
   return (
@@ -24,10 +26,13 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <ProductForm formSubmitted={formSubmitted} setFormSubmitted={setFormSubmitted}></ProductForm>
-            <ProductList formSubmitted={formSubmitted}></ProductList>
+            <ProductList formSubmitted={formSubmitted}  setFormSubmitted={setFormSubmitted}></ProductList>
           </Route>
           <Route exact path='/productInfo/:_id'>
             <ProductItem></ProductItem>
+          </Route>
+          <Route exact path='/productEdit/:_id'>
+            <ProductEdit formSubmitted={formSubmitted} setFormSubmitted={setFormSubmitted}></ProductEdit>
           </Route>
         </Switch>
       </div>
